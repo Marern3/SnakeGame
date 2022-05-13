@@ -1,6 +1,7 @@
 """Snake, classic arcade game.
 
 Author: Humberto Alejandro Rosas Téllez
+Author2: Mariana Edith Ramírez Navarrete
 """
 
 from random import randrange
