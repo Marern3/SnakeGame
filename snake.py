@@ -1,18 +1,29 @@
 """Snake, classic arcade game.
 
 Author: Humberto Alejandro Rosas Téllez
+Author2: Mariana Edith Ramírez Navarrete
 """
 
 from random import randrange
 from re import X
 from tkinter import Y
 from turtle import *
+#VRDL: Se importó librería para su uso en la función movefood()
+import random
 
 from freegames import square, vector
 
 food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
+
+#ARCR: Arrays y random integrados para el cambio de colores 
+colorsSnake = ['blue','green','purple','black','pink']
+colorFood = ['brown','skyblue','darkblue','turqouise','orange']
+colorOpSnake = random.randrange(0,5,1)
+colorOpFood = random.randrange(0,2,1)
+randcolorFood = colorFood[colorOpFood]
+randcolorSnake = colorsSnake[colorOpSnake]
 
 
 def change(x, y):
@@ -52,7 +63,9 @@ def move():
     clear()
 
     for body in snake:
-        square(body.x, body.y, 9, 'black')
+         #VRDL: Se cambió color
+    #ARCR: Se cambio definicion de colores para volverlo aleatorio cada vez que se inicia el juego
+        square(body.x, body.y, 9, randcolorSnake)
 
     "           Mover comida        "
     food.x += randrange(-1, 2,1) * 10 
@@ -66,7 +79,7 @@ def move():
         food.y = randrange(-1, 2,1) * 10      
         square(food.x, food.y, 9, 'green') #X=0, Y=0, tanmaño 9        
 
-    square(food.x, food.y, 9, 'green') #X=0, Y=0, tanmaño 9
+    square(food.x, food.y, 9, randcolorFood) #X=0, Y=0, tanmaño 9
     update() #borra pantalla
     ontimer(move, 100) #velocidad
 
